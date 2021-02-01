@@ -15,7 +15,10 @@ import (
 )
 
 var (
-	featureGatesAllowingUpgrade = sets.NewString("", string(configv1.LatencySensitive))
+	featureGatesAllowingUpgrade = sets.NewString("",
+		string(configv1.LatencySensitive),
+		string(configv1.IPv6DualStackNoUpgrade), // the "NoUpgrade" is a lie
+	)
 )
 
 // FeatureUpgradeableController is a controller that sets upgradeable=false if anything outside the allowed list is the specified featuregates.
